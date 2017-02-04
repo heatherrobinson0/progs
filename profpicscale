@@ -1,0 +1,27 @@
+package jan30;
+import java.util.Scanner;
+
+public class problem02 {
+    public static void main(String[] args) {
+        // inputs: N>0 W>0 H>0
+        // N is the size in which they all must fit
+        // W.width & H.height
+        // how much does it need to be scaled?
+        
+        // first, take in nums
+        Scanner scan = new Scanner(System.in);
+        double n = (double) scan.nextInt();
+        double w = (double) scan.nextInt();
+        double h = (double) scan.nextInt();
+        
+        // find larger
+        double big = 0.0;
+        if (w > h) big = w;
+        else big = h;
+        
+        // big * ??? = n
+        // n / big = ???
+        System.out.printf("%.4f", n / big);
+        scan.close();
+    }
+}

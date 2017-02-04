@@ -1,0 +1,83 @@
+package jan30;
+import java.util.Scanner;
+
+public class problem03 {
+    public static void main(String[] args) {
+        // given a distance and 2 speeds,
+        // determine the difference in time to travel
+        // multiple lines of test cases
+
+        Scanner scan = new Scanner(System.in);
+
+        while (scan.hasNextLine()) {
+            // if it equals 0, break
+            // mi. mi/hr find hr
+            // mi / (mi/hr) = hr *60*60 = seconds
+
+            double dist = (double)scan.nextInt();
+            if (dist == 0)
+                break;
+
+            double speed1 = (double)scan.nextInt();
+            double speed2 = (double)scan.nextInt();
+
+            double time1 = dist / speed1;
+            time1 = time1 * 60 * 60; // seconds
+
+            double time2 = dist / speed2;
+            time2 = time2 * 60 * 60; // seconds
+
+            if (time1 > time2) {
+                // given in seconds
+                // needs to be H:MM:SS
+
+                double hours = 0.0;
+                double minutes = 0.0;
+                double seconds = time1 - time2;
+
+                while (seconds >= 60) {
+                    minutes++;
+                    seconds -= 60;
+                }
+
+                while (minutes >= 60) {
+                    hours++;
+                    minutes -= 60;
+                }
+
+                // String numberAsString = String.format ("%05d", number);
+                String hourString = String.format("%.0f", hours);
+                String minuteString = String.format("%02.0f", minutes);
+                String secondString = String.format("%02.0f", seconds);
+                System.out.printf("\n" + hourString + ":" + minuteString + ":"
+                    + secondString);
+            }
+            else {
+                // given in seconds
+                // needs to be H:MM:SS
+
+                double hours = 0.0;
+                double minutes = 0.0;
+                double seconds = time2 - time1;
+
+                while (seconds > 60) {
+                    minutes++;
+                    seconds -= 60;
+                }
+
+                while (minutes > 60) {
+                    hours++;
+                    minutes -= 60;
+                }
+
+                // String numberAsString = String.format ("%05d", number);
+                String hourString = String.format("%.0f", hours);
+                String minuteString = String.format("%02.0f", minutes);
+                String secondString = String.format("%02.0f", seconds);
+                System.out.printf("\n" + hourString + ":" + minuteString + ":"
+                    + secondString);
+            }
+        }
+        scan.close();
+    }
+}
